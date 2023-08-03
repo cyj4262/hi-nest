@@ -2,6 +2,7 @@ import { Controller, Get, Param, Post, Delete, Patch, Body, Query } from '@nestj
 import { MoviesService } from './movies.service';
 import { Movie } from './entites/movie.entity';
 import { CreateMovieDto } from './dto/create-movie.dto';
+import { UpdateMovieDto } from './dto/update-movie.dto';
 
 @Controller('movies') //url의 entry point를 컨트롤
 export class MoviesController {
@@ -29,7 +30,7 @@ export class MoviesController {
         return this.moviesService.deleteOne(movieId);
     }
     @Patch(":id")
-    path(@Param("id") movieId: number, @Body() updateData) {
+    path(@Param("id") movieId: number, @Body() updateData: UpdateMovieDto) {
         return this.moviesService.update(movieId, updateData);
     }
 
