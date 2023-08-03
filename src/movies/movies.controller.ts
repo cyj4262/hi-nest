@@ -5,7 +5,7 @@ import { Movie } from './entites/movie.entity';
 @Controller('movies') //url의 entry point를 컨트롤
 export class MoviesController {
 
-    constructor(private readonly moviesService: MoviesService) {}
+    constructor(private readonly moviesService: MoviesService) { }
 
     @Get()
     getAll(): Movie[] {
@@ -13,7 +13,7 @@ export class MoviesController {
     }
 
     @Get(":id")
-    getOne(@Param('id') movieId: string) : Movie{
+    getOne(@Param('id') movieId: string): Movie {
         return this.moviesService.getOne(movieId);
     }
 
@@ -28,12 +28,9 @@ export class MoviesController {
     }
     @Patch(":id")
     path(@Param("id") movieId: string, @Body() updateData) {
-        return {
-            updateMovie: movieId,
-            ...updateData,
-        };
+        return this.moviesService.update(movieId, updateData);
     }
 
-    
+
 
 }

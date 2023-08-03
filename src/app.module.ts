@@ -8,4 +8,4 @@ import { MoviesService } from './movies/movies.service';
   controllers: [MoviesController], //url 가져오고 함수를 실행
   providers: [MoviesService], //
 })
-export class AppModule {}
+export class AppModule { }
